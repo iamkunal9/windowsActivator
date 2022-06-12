@@ -1,0 +1,52 @@
+@echo off
+@setlocal DisableDelayedExpansion
+:top
+color 6
+cls
+echo:
+echo:  ####      ##     ##   ##  ##  ##   ##  ##   ##  ##     ##     ##        ####   
+echo:   ##      ####    ### ###  ## ##    ##  ##   ### ##    ####    ##       ##  ##  
+echo:   ##     ##  ##   #######  ####     ##  ##   ######   ##  ##   ##       ##  ##  
+echo:   ##     ######   ## # ##  ###      ##  ##   ######   ######   ##        #####  
+echo:   ##     ##  ##   ##   ##  ####     ##  ##   ## ###   ##  ##   ##           ##  
+echo:   ##     ##  ##   ##   ##  ## ##    ##  ##   ##  ##   ##  ##   ##       ##  ##  
+echo:  ####    ##  ##   ##   ##  ##  ##    ####    ##  ##   ##  ##   ######    ####  HERE!
+echo: 
+echo SELECT WINDOWS VERSION(CHECK BY TYPING WINVER IN RUN (WIN+R))
+echo [1] Home
+echo [2] Professional
+echo [3] Education
+echo [4] Enterprise
+set "Home=TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
+set "HomeN=3KHY7-WNT83-DGQKR-F7HPR-844BM"
+set "HomeSingleLanguage=7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH"
+set "HomeCountrySpecific=PVMJN-6DFY6-9CCP6-7BKTT-D3WVR"
+set "Professional=W269N-WFGWX-YVC9B-4J6C9-T83GX"
+set "ProfessionalN=MH37W-N47XK-V7XM9-C7227-GCQG9"
+set "Education=NW6C2-QMPVW-D7KKK-3GKT6-VCFB2"
+set "EducationN=2WH4N-8QGBV-H22JP-CT43Q-MDWWJ"
+set "Enterprise=NPPR9-FWDCX-D2C8J-H872K-2YT43"
+set "EnterpriseN=DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4"
+choice /C:1234 /M "Enter the value :" /N
+set _choice=%errorlevel%
+if %_choice% == 1 goto home	
+if %_choice% == 2 goto Professional
+if %_choice% == 3 goto Education	
+if %_choice% == 4 goto Enterprise
+:home
+slmgr /ipk %Home%
+goto final
+:Professional
+slmgr /ipk %Professional%
+goto final
+:Education
+slmgr /ipk %Education%
+goto final
+:Enterprise
+slmgr /ipk %Enterprise%
+goto final
+:final
+slmgr /skms s8.uk.to
+slmgr /ato
+pause
+goto top
