@@ -1,5 +1,7 @@
 @echo off
 @setlocal DisableDelayedExpansion
+set "params=%*"
+cd /d "%~dp0" &amp;&amp; ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &amp;&amp; fsutil dirty query %systemdrive% 1&gt;nul 2&gt;nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" &amp;&amp; %~s0 %params%", "", "runas", 1 &gt;&gt; "%temp%\getadmin.vbs" &amp;&amp; "%temp%\getadmin.vbs" &amp;&amp; exit /B )
 :top
 color 6
 cls
