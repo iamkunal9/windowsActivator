@@ -1,7 +1,15 @@
 @echo off
 @setlocal DisableDelayedExpansion
-set "params=%*"
-cd /d "%~dp0" &amp;&amp; ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &amp;&amp; fsutil dirty query %systemdrive% 1&gt;nul 2&gt;nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" &amp;&amp; %~s0 %params%", "", "runas", 1 &gt;&gt; "%temp%\getadmin.vbs" &amp;&amp; "%temp%\getadmin.vbs" &amp;&amp; exit /B )
+NET SESSION
+IF %ERRORLEVEL% NEQ 0 GOTO ELEVATE
+GOTO ADMINTASKS
+
+:ELEVATE
+CD /d %~dp0
+MSHTA "javascript: var shell = new ActiveXObject('shell.application'); shell.ShellExecute('%~nx0', '', '', 'runas', 1);close();"
+EXIT
+
+:ADMINTASKS
 :top
 color 6
 cls
