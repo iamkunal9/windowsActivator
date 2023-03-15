@@ -60,7 +60,7 @@ goto final
 slmgr /ipk %Enterprise%
 goto final
 :final
-slmgr /skms s8.uk.to
+slmgr /skms kms8.msguides.com
 slmgr /ato
 pause
 goto top
