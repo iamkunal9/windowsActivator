@@ -27,6 +27,8 @@ echo [1] Home
 echo [2] Professional
 echo [3] Education
 echo [4] Enterprise
+echo [5] ProfessionalN
+echo [6] Server2016
 set "Home=TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
 set "HomeN=3KHY7-WNT83-DGQKR-F7HPR-844BM"
 set "HomeSingleLanguage=7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH"
@@ -37,13 +39,15 @@ set "Education=NW6C2-QMPVW-D7KKK-3GKT6-VCFB2"
 set "EducationN=2WH4N-8QGBV-H22JP-CT43Q-MDWWJ"
 set "Enterprise=NPPR9-FWDCX-D2C8J-H872K-2YT43"
 set "EnterpriseN=DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4"
-choice /C:12345 /M "Enter the value :" /N
+set "Server=WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY"
+choice /C:123456 /M "Enter the value :" /N
 set _choice=%errorlevel%
 if %_choice% == 1 goto home	
 if %_choice% == 2 goto Professional
 if %_choice% == 3 goto Education	
 if %_choice% == 4 goto Enterprise
 if %_choice% == 5 goto ProfessionalN
+if %_choice% == 6 goto Server
 :home
 slmgr /ipk %Home%
 goto final
@@ -58,6 +62,9 @@ slmgr /ipk %Education%
 goto final
 :Enterprise
 slmgr /ipk %Enterprise%
+goto final
+:Server
+slmgr /ipk %Server%
 goto final
 :final
 slmgr /skms kms8.msguides.com
